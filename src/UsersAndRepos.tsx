@@ -1,15 +1,7 @@
 import { CustomForm } from "./CustomForm";
 import { useState } from "react";
+import { Repo, User } from "./types";
 
-type User = {
-  login: string;
-  public_repos: number;
-};
-
-type Repo = {
-  name: string;
-  stargazers_count: number;
-};
 export const UsersAndRepos = () => {
   const [data, setData] = useState<User | Repo | null>(null);
 
