@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { Repo, User } from "./types";
 
 type Search = {
   text: string;
   type: string;
 };
 
-export const CustomForm = ({ setData }: any) => {
+export const CustomForm = ({
+  setData,
+}: {
+  setData: (data: Repo | User | null) => void;
+}) => {
   const [params, setParams] = useState<Search>({
     text: "",
     type: "repos",
@@ -24,7 +29,7 @@ export const CustomForm = ({ setData }: any) => {
       <label>
         <span>Значение:</span>
         <input
-          value={params?.text}
+          value={params.text}
           onChange={(e) => {
             setParams({ ...params, text: e.target.value });
           }}
@@ -35,6 +40,7 @@ export const CustomForm = ({ setData }: any) => {
       <label>
         Репозитории или пользователи?
         <select
+          value={params.type}
           name="selectedFruit"
           defaultValue="repos"
           onChange={(e) => {
